@@ -1,0 +1,11 @@
+delete-domain domain1
+create-domain --portbase 3000 --nopassword=true appdomain
+start-domain appdomain
+
+disable-phone-home
+
+set-log-attributes com.sun.enterprise.server.logging.GFFileHandler.logtoFile=true
+set configs.config.server-config.http-service.access-log.maximum-file-size=50000000
+set-log-attributes fish.payara.enterprise.server.logging.PayaraNotificationFileHandler.maxHistoryFiles=2
+
+stop-domain appdomain

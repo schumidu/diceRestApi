@@ -1,0 +1,41 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "gradle",
+			"id": "/home/lukas/Documents/Projekte/diceThrowerwardiceThrower",
+			"script": "war",
+			"description": "Generates a war archive with all the compiled classes, the web-app content and the libraries.",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"project": "diceThrower",
+			"buildFile": "/home/lukas/Documents/Projekte/diceThrower/build.gradle",
+			"rootProject": "diceThrower",
+			"projectFolder": "/home/lukas/Documents/Projekte/diceThrower",
+			"workspaceFolder": "/home/lukas/Documents/Projekte/diceThrower",
+			"args": "",
+			"javaDebug": false,
+			"problemMatcher": [
+				"$gradle"
+			],
+			"label": "gradle: war"
+		},
+		{
+			"label": "Redeploy on payara",
+			"type": "shell",
+			"command": "./deploy-war.sh"
+		},
+		{
+			"label": "Build and redeploy",
+			"dependsOrder": "sequence",
+			"dependsOn": ["gradle: war", "Redeploy on payara"]
+		},
+		{
+			"label": "Start payara in debug",
+			"type": "shell",
+			"command": "./start-payara.sh"
+		}
+	]
+}
